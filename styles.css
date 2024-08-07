@@ -1,0 +1,22 @@
+.wikipedia-preview {
+    position: absolute;
+    z-index: 1000;
+    background-color: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 4px;
+    padding: 10px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .wikipedia-preview h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .wikipedia-preview p {
+    margin: 0;
+  }
