@@ -1,7 +1,7 @@
 {
   "name": "obsidian-wikipedia-preview",
   "version": "1.0.0",
-  "description": "Shows previews for Wikipedia links in Obsidian notes as pop-ups.",
+  "description": "Shows previews for Wikipedia links in Obsidian notes as pop-ups",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
