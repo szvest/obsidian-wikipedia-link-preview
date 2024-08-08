@@ -1,40 +1,56 @@
+// main.ts
 import { Plugin, MarkdownPostProcessorContext } from 'obsidian';
 
 export default class WikipediaPreviewPlugin extends Plugin {
+  private hidePreviewTimeout: number | null = null;
+  
   async onload() {
     this.registerMarkdownPostProcessor(this.postProcessor.bind(this));
   }
 
   async postProcessor(el: HTMLElement, ctx: MarkdownPostProcessorContext) {
-    document.addEventListener('mouseover', (event: MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
-            this.handleLinkHover(event);
-        }
-    });
-
-    document.addEventListener('mouseout', (event: MouseEvent) => {
-        const target = event.target as HTMLElement;
-        if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
-          setTimeout(() => {
-            this.hidePreview();
-        }, 500); // Delay in milliseconds
-        }
-    });
-}
+    document.addEventListener('mouseover', this.handleLinkHover.bind(this));
+    document.addEventListener('mouseout', this.handleLinkMouseLeave.bind(this));
+  }
 
   async handleLinkHover(event: MouseEvent) {
-    const link = event.target as HTMLAnchorElement;
-    const href = link.href;
-
-    if (href.includes('wikipedia.org')) {
-      const preview = await this.fetchWikipediaPreview(href);
-      this.showPreview(link, preview);
+    const target = event.target as HTMLElement;
+    if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
+      // Remove existing previews
+      this.hidePreview();
+      
+      const link = target as HTMLAnchorElement;
+      const href = link.href;
+      if (href.includes('wikipedia.org')) {
+        const preview = await this.fetchWikipediaPreview(href);
+        this.showPreview(link, preview);
+      }
+    } else if (target.classList.contains('wikipedia-preview') || target.closest('.wikipedia-preview')) {
+      if (this.hidePreviewTimeout) {
+        clearTimeout(this.hidePreviewTimeout);
+        this.hidePreviewTimeout = null;
+      }
     }
   }
 
   handleLinkMouseLeave(event: MouseEvent) {
-    this.hidePreview();
+    const target = event.target as HTMLElement;
+    if (
+      (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) ||
+      target.classList.contains('wikipedia-preview') ||
+      target.closest('.wikipedia-preview')
+    ) {
+      this.startHidePreviewTimer();
+    }
+  }
+
+  startHidePreviewTimer() {
+    if (this.hidePreviewTimeout) {
+      clearTimeout(this.hidePreviewTimeout);
+    }
+    this.hidePreviewTimeout = window.setTimeout(() => {
+      this.hidePreview();
+    }, 300);
   }
 
   async fetchWikipediaPreview(url: string): Promise<string> {
@@ -56,14 +72,16 @@ export default class WikipediaPreviewPlugin extends Plugin {
   }
 
   showPreview(link: HTMLElement, content: string) {
+    // Ensure only one preview is shown at a time
+    this.hidePreview();
+
     const previewEl = document.createElement('div');
     previewEl.classList.add('wikipedia-preview');
     previewEl.innerHTML = content;
 
     const rect = link.getBoundingClientRect();
-    previewEl.style.position = 'absolute';
     previewEl.style.left = `${rect.left}px`;
-    previewEl.style.top = `${rect.bottom}px`;
+    previewEl.style.top = `${rect.bottom + window.scrollY}px`;
 
     document.body.appendChild(previewEl);
   }
