@@ -62,11 +62,20 @@ export default class WikipediaPreviewPlugin extends Plugin {
     try {
       const response = await fetch(apiUrl);
       const data = await response.json();
-      return `
-        <img src="${data.thumbnail?.source ?? ''}" alt="Featured image" />
+
+      let previewContent = '';
+
+      // Only add the image if it exists
+      if (data.thumbnail?.source) {
+        previewContent += `<img src="${data.thumbnail.source}" alt="Featured image" />`;
+      }
+
+      previewContent += `
         <h5>${data.description ?? 'No description available'}</h5>
         <p>${data.extract ?? 'No extract available'}</p>
       `;
+
+      return previewContent;
     } catch (error) {
       console.error('Error fetching Wikipedia preview:', error);
       return 'Error fetching preview';
