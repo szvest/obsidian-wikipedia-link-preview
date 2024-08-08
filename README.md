@@ -40,7 +40,6 @@ Once installed, the plugin automatically activates when you hover over a compati
 
 - A brief summary of the article.
 - A thumbnail image (if available).
-- A link to read the full article on Wikipedia.
 
 ## Contributing
 
