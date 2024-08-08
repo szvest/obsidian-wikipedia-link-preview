@@ -1,5 +1,7 @@
 # Obsidian Wikipedia Preview Popup
 
+This is a plugin for [Obsidian] (https://obsidian.md).
+
 <img src="./screenshot.gif" alt="Obsidian Wikipedia Preview Popup Screeshot">
 
 ## About
