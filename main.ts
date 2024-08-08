@@ -47,6 +47,7 @@ export default class WikipediaPreviewPlugin extends Plugin {
       return `
         <h3>${data.title}</h3>
         <p>${data.extract}</p>
+        <img src="${data.thumbnail?.source}" alt="Featured image" />
       `;
     } catch (error) {
       console.error('Error fetching Wikipedia preview:', error);
