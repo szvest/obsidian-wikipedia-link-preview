@@ -3,7 +3,7 @@
     "name": "Wikipedia Link Preview for Obsidian",
     "version": "1.0.0",
     "minAppVersion": "0.15.0",
-    "description": "Displays Wikipedia article previews as pop-ups when hovering over wikipedia links in Obsidian notes.",
+    "description": "Displays linked Wikipedia article preview as a pop-up when hovering over wikipedia links in Obsidian notes.",
     "author": "Fayssal Fertakh",
     "authorUrl": "https://en.wikipedia.org/wiki/User:FayssalF",
     "isDesktopOnly": false
