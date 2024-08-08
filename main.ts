@@ -7,19 +7,21 @@ export default class WikipediaPreviewPlugin extends Plugin {
 
   async postProcessor(el: HTMLElement, ctx: MarkdownPostProcessorContext) {
     document.addEventListener('mouseover', (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
-        this.handleLinkHover(event);
-      }
+        const target = event.target as HTMLElement;
+        if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
+            this.handleLinkHover(event);
+        }
     });
 
     document.addEventListener('mouseout', (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
-        this.handleLinkMouseLeave(event);
-      }
+        const target = event.target as HTMLElement;
+        if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
+          setTimeout(() => {
+            this.hidePreview();
+        }, 500); // Delay in milliseconds
+        }
     });
-  }
+}
 
   async handleLinkHover(event: MouseEvent) {
     const link = event.target as HTMLAnchorElement;
@@ -32,13 +34,7 @@ export default class WikipediaPreviewPlugin extends Plugin {
   }
 
   handleLinkMouseLeave(event: MouseEvent) {
-    const relatedTarget = event.relatedTarget as HTMLElement;
-    const preview = document.querySelector('.wikipedia-preview');
-
-    // Check if the mouse is leaving the link and the preview
-    if (relatedTarget !== preview && !preview?.contains(relatedTarget)) {
-      this.hidePreview();
-    }
+    this.hidePreview();
   }
 
   async fetchWikipediaPreview(url: string): Promise<string> {
@@ -52,6 +48,7 @@ export default class WikipediaPreviewPlugin extends Plugin {
         <img src="${data.thumbnail?.source}" alt="Featured image" />
         <h5>${data.description}</h5>
         <p>${data.extract}</p>
+        <hr />
       `;
     } catch (error) {
       console.error('Error fetching Wikipedia preview:', error);
