@@ -3,28 +3,30 @@ import { Plugin, MarkdownPostProcessorContext } from 'obsidian';
 
 export default class WikipediaPreviewPlugin extends Plugin {
   private hidePreviewTimeout: number | null = null;
-  
+
   async onload() {
     this.registerMarkdownPostProcessor(this.postProcessor.bind(this));
+    document.addEventListener('mouseover', this.handleLinkHover.bind(this));
+    document.addEventListener('mouseout', this.handleLinkMouseLeave.bind(this));
+  }
+
+  onunload() {
+    document.removeEventListener('mouseover', this.handleLinkHover.bind(this));
+    document.removeEventListener('mouseout', this.handleLinkMouseLeave.bind(this));
   }
 
   async postProcessor(el: HTMLElement, ctx: MarkdownPostProcessorContext) {
-    document.addEventListener('mouseover', this.handleLinkHover.bind(this));
-    document.addEventListener('mouseout', this.handleLinkMouseLeave.bind(this));
+    // No need to re-register event listeners here
   }
 
   async handleLinkHover(event: MouseEvent) {
     const target = event.target as HTMLElement;
     if (target.tagName === 'A' && target.matches('a[href^="https://en.wikipedia.org/wiki/"]')) {
-      // Remove existing previews
       this.hidePreview();
-      
       const link = target as HTMLAnchorElement;
       const href = link.href;
-      if (href.includes('wikipedia.org')) {
-        const preview = await this.fetchWikipediaPreview(href);
-        this.showPreview(link, preview);
-      }
+      const preview = await this.fetchWikipediaPreview(href);
+      this.showPreview(link, preview);
     } else if (target.classList.contains('wikipedia-preview') || target.closest('.wikipedia-preview')) {
       if (this.hidePreviewTimeout) {
         clearTimeout(this.hidePreviewTimeout);
@@ -61,9 +63,9 @@ export default class WikipediaPreviewPlugin extends Plugin {
       const response = await fetch(apiUrl);
       const data = await response.json();
       return `
-        <img src="${data.thumbnail?.source}" alt="Featured image" />
-        <h5>${data.description}</h5>
-        <p>${data.extract}</p>
+        <img src="${data.thumbnail?.source ?? ''}" alt="Featured image" />
+        <h5>${data.description ?? 'No description available'}</h5>
+        <p>${data.extract ?? 'No extract available'}</p>
       `;
     } catch (error) {
       console.error('Error fetching Wikipedia preview:', error);
@@ -72,7 +74,6 @@ export default class WikipediaPreviewPlugin extends Plugin {
   }
 
   showPreview(link: HTMLElement, content: string) {
-    // Ensure only one preview is shown at a time
     this.hidePreview();
 
     const previewEl = document.createElement('div');
