@@ -1,6 +1,4 @@
-# Wikipedia Preview Popup
-
-![Wikipedia Preview Popup Logo](/obsidian-wikipedia-preview.mp4)
+# Obsidian Wikipedia Preview Popup
 
 ## About
 
