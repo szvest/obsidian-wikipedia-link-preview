@@ -45,9 +45,11 @@ export default class WikipediaPreviewPlugin extends Plugin {
       const response = await fetch(apiUrl);
       const data = await response.json();
       return `
-        <h3>${data.title}</h3>
-        <p>${data.extract}</p>
         <img src="${data.thumbnail?.source}" alt="Featured image" />
+        <h5>${data.description}</h5>
+        <p>${data.extract}</p>
+        <hr />
+        <p><a href="${data.content_urls.desktop.page}" target="_blank">Read more on Wikipedia</a></p>
       `;
     } catch (error) {
       console.error('Error fetching Wikipedia preview:', error);
