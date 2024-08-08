@@ -22,7 +22,7 @@
 
 To install the Wikipedia Preview Popup plugin, follow these steps:
 
-1. **Download the latest release** from the [GitHub Releases](https://github.com/szvest/Wikipedia-Preview-Popup/releases) page.
+1. **Download the latest release** from the [GitHub Releases](https://github.com/szvest/obsidian-wikipedia-preview/releases) page.
 
 2. **Extract the downloaded archive** into your Obsidian vault. Ensure that the folder structure is maintained.
 
@@ -42,7 +42,7 @@ Once installed, the plugin automatically activates when you hover over a compati
 
 ## Contributing
 
-Contributions to improve the Wikipedia Preview Popup plugin are welcome! If you have suggestions, bug reports, or would like to contribute code, please feel free to submit pull requests or report issues on the [GitHub repository](https://github.com/szvest/Wikipedia-Preview-Popup/issues).
+Contributions to improve the Wikipedia Preview Popup plugin are welcome! If you have suggestions, bug reports, or would like to contribute code, please feel free to submit pull requests or report issues on the [GitHub repository](https://github.com/szvest/obsidian-wikipedia-preview/issues).
 
 ### Contribution Guidelines
 
@@ -61,4 +61,4 @@ Wikipedia Preview Popup is released under the MIT license. See the `LICENSE` fil
 
 ## Contact
 
-For any inquiries or support, please reach out via the [GitHub repository](https://github.com/szvest/Wikipedia-Preview-Popup) or create an issue for assistance.
+For any inquiries or support, please reach out via the [GitHub repository](https://github.com/szvest/obsidian-wikipedia-preview) or create an issue for assistance.
