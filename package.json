@@ -1,7 +1,7 @@
 {
   "name": "obsidian-wikipedia-preview",
   "version": "1.0.0",
-  "description": "Displays linked Wikipedia article preview as a pop-up when hovering over wikipedia links in Obsidian notes.",
+  "description": "Displays linked Wikipedia article preview as a popup when hovering over wikipedia links in Obsidian notes.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",

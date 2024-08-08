@@ -34,7 +34,7 @@ To install the Wikipedia Preview Popup plugin, follow these steps:
 
 ## Usage
 
-Once installed, the plugin automatically activates when you hover over a compatible Wikipedia link. Simply move your cursor over the link to see the Wikipedia-style preview. The popup will display:
+Once installed, the plugin automatically activates when you hover over a compatible Wikipedia link on reading mode. Simply move your cursor over the link to see the Wikipedia article preview. The popup will display:
 
 - A brief summary of the article.
 - A thumbnail image (if available).
