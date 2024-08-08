@@ -6,7 +6,7 @@ This is a plugin for [Obsidian] (https://obsidian.md).
 
 ## About
 
-**Wikipedia Preview Popup** is a plugin for Obsidian that enhances your reading experience by providing previews for Wikipedia links directly within the note. This plugin is designed to make research and note-taking more efficient by allowing users to quickly access summaries and overviews of linked Wikipedia articles without leaving the note.
+**Wikipedia Preview Popup** is a plugin that enhances your reading experience by providing previews for Wikipedia links directly within the note. This plugin is designed to make research and note-taking more efficient by allowing users to quickly access summaries and overviews of linked Wikipedia articles without leaving the note.
 
 ## Features
 
