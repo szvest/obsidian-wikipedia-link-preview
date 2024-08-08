@@ -63,3 +63,4 @@ Wikipedia Preview Popup is released under the MIT license. See the `LICENSE` fil
 ## Contact
 
 For any inquiries or support, please reach out via the [GitHub repository](https://github.com/szvest/obsidian-wikipedia-preview) or create an issue for assistance.
+# obsidian-wikipedia-link-preview
