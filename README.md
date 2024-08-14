@@ -12,10 +12,6 @@ This is a plugin for [Obsidian] (https://obsidian.md).
 
 - **Automatic Previews:** Automatically generates previews for links matching the pattern `[https://en.wikipedia.org/wiki/][Article Title]`. When you hover over such links, a popup will display the article's summary and featured image (if available).
 
-- **Customizable Styling:** Users can customize the appearance of the previews through CSS, allowing for a personalized look that fits their workflow.
-
-- **Responsive Design:** The preview adapts to various screen sizes, ensuring a consistent user experience across devices, whether on desktop or mobile.
-
 - **Image Support:** Displays the featured image from the Wikipedia article, enhancing the visual context of the preview.
 
 - **Easy Installation:** Quick setup process to integrate seamlessly into your existing Obsidian environment.
@@ -40,6 +36,12 @@ Once installed, the plugin automatically activates when you hover over a compati
 
 - A thumbnail image (if available).
 - A brief summary of the article.
+
+## To-Do
+
+- **Customizable Styling:** Users can customize the appearance of the previews through CSS, allowing for a personalized look that fits their workflow.
+
+- **Responsive Design:** The preview adapts to various screen sizes, ensuring a consistent user experience across devices, whether on desktop or mobile.
 
 ## Contributing
 
