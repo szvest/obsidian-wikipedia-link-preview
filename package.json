@@ -1,6 +1,6 @@
 {
   "name": "obsidian-wikipedia-link-preview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays linked Wikipedia article preview as a popup when hovering over wikipedia links in Obsidian notes.",
   "main": "main.js",
   "scripts": {
@@ -12,11 +12,11 @@
   "author": "Fayssal Fertakh",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "builtin-modules": "3.2.0",
-    "esbuild": "0.17.3",
+    "@types/node": "^22.3.0",
+    "builtin-modules": "4.0.0",
+    "esbuild": "0.23.0",
     "obsidian": "^1.6.6",
     "tslib": "^2.6.3",
-    "typescript": "4.7.4"
+    "typescript": "5.5.4"
   }
 }
