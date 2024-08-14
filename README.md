@@ -2,7 +2,7 @@
 
 This is a plugin for [Obsidian] (https://obsidian.md).
 
-<img src="./screenshot.gif" alt="Obsidian Wikipedia Preview Popup Screeshot">
+<img src="./screenshot.gif" alt="Obsidian Wikipedia Preview Popup Screenshot">
 
 ## About
 
@@ -38,8 +38,8 @@ To install the Wikipedia Preview Popup plugin, follow these steps:
 
 Once installed, the plugin automatically activates when you hover over a compatible Wikipedia link on reading mode. Simply move your cursor over the link to see the Wikipedia article preview. The popup will display:
 
-- A brief summary of the article.
 - A thumbnail image (if available).
+- A brief summary of the article.
 
 ## Contributing
 
