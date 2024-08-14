@@ -37,12 +37,6 @@ Once installed, the plugin automatically activates when you hover over a compati
 - A thumbnail image (if available).
 - A brief summary of the article.
 
-## To-Do
-
-- **Customizable Styling:** Users can customize the appearance of the previews through CSS, allowing for a personalized look that fits their workflow.
-
-- **Responsive Design:** The preview adapts to various screen sizes, ensuring a consistent user experience across devices, whether on desktop or mobile.
-
 ## Contributing
 
 Contributions to improve the Wikipedia Preview Popup plugin are welcome! If you have suggestions, bug reports, or would like to contribute code, please feel free to submit pull requests or report issues on the [GitHub repository](https://github.com/szvest/obsidian-wikipedia-link-preview/issues).
