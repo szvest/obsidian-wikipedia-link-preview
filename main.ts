@@ -125,11 +125,9 @@ export default class WikipediaPreviewPlugin extends Plugin {
 
     // Position the preview element
     const rect = link.getBoundingClientRect();
-    previewEl.style.position = 'absolute';
-    previewEl.style.left = `${rect.left}px`;
-    previewEl.style.top = `${rect.bottom + window.scrollY}px`;
+    previewEl.style.setProperty('--left-position', `${rect.left}px`);
+    previewEl.style.setProperty('--top-position', `${rect.bottom + window.scrollY}px`);
 
-    // Append the preview element to the body
     document.body.appendChild(previewEl);
 }
 

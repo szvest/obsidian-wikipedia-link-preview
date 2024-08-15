@@ -4,11 +4,12 @@
   background-color: var(--background-primary);
   border: 1px solid var(--background-modifier-border);
   border-radius: 4px;
-
   max-width: 380px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   font-size: 14px;
   line-height: 1.5;
+  left: var(--left-position);
+    top: var(--top-position);
 }
 
 .wikipedia-preview h3 {
@@ -16,6 +17,7 @@
   font-size: 16px;
   color: white;
   border-bottom: 2px solid var(--background-modifier-border);
+  padding: 10px;
 }
 
 .wikipedia-preview h5 {
@@ -29,16 +31,27 @@
 .wikipedia-preview p {
   margin: 0;
   margin-bottom: 10px;
-  padding: 10px 15px; /* Padding for the paragraph */
+  padding: 10px 15px;
 }
 
 .wikipedia-preview img {
-  width: 100%; /* Ensure the image takes the full width */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Make the image a block element */
-  object-fit: cover; /* Cover the area without distortion */
-  margin: 0; /* Remove any margin */
-  padding: 0; /* Remove any padding */
-  border-top-left-radius: 4px; /* Optional: match border radius */
-  border-top-right-radius: 4px; /* Optional: match border radius */
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.wikipedia-preview-content {
+  padding: 10px;
+}
+
+.wikipedia-preview-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
