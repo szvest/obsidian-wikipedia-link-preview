@@ -87,14 +87,51 @@ export default class WikipediaPreviewPlugin extends Plugin {
 
     const previewEl = document.createElement('div');
     previewEl.classList.add('wikipedia-preview');
-    previewEl.innerHTML = content;
 
+    // Create elements for each part of the preview content
+    const titleEl = document.createElement('h5');
+    const descriptionEl = document.createElement('p');
+    const imageEl = document.createElement('img');
+
+    // Set attributes and text content for each element
+    if (content.includes('<img src=')) {
+        const imgSrcRegex = /<img src="(.*?)"/;
+        const imgSrcMatch = imgSrcRegex.exec(content);
+
+        if (imgSrcMatch?.[1]) {
+            imageEl.src = imgSrcMatch[1];
+            imageEl.alt = "Featured image";
+            previewEl.appendChild(imageEl);
+        }
+    }
+
+    const titleRegex = /<h5>([\s\S]*?)<\/h5>/;
+    const titleMatch = titleRegex.exec(content);
+
+    if (titleMatch?.[1]) {
+        titleEl.textContent = titleMatch[1].trim();
+        previewEl.appendChild(titleEl);
+    }
+
+    const descriptionRegex = /<p>([\s\S]*?)<\/p>/;
+    const descriptionMatch = descriptionRegex.exec(content);
+
+    if (descriptionMatch?.[1]) {
+        descriptionEl.textContent = descriptionMatch[1].trim();
+        previewEl.appendChild(descriptionEl);
+    }
+
+    
+
+    // Position the preview element
     const rect = link.getBoundingClientRect();
+    previewEl.style.position = 'absolute';
     previewEl.style.left = `${rect.left}px`;
     previewEl.style.top = `${rect.bottom + window.scrollY}px`;
 
+    // Append the preview element to the body
     document.body.appendChild(previewEl);
-  }
+}
 
   hidePreview() {
     const preview = document.querySelector('.wikipedia-preview');
